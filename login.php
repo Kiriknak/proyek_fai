@@ -1,3 +1,11 @@
+<?php 
+  session_start();
+  if(isset($_SESSION['id']))
+  {
+    header('location:index.php');
+  }
+?>
+
 <!DOCTYPE HTML>
 <html>
 
@@ -36,9 +44,9 @@
     <div class="right menu">
       <div class="item">
         <div class="ui buttons">
-          <button class="ui green inverted button">Login</button>
+          <a class="ui green inverted button" href="login.php">Login</a>
           <div class="or"></div>
-          <button class="ui  reverted green button">Register</button>
+          <a class="ui  reverted green button" href="register.php">Register</a>
         </div>
 
 
@@ -55,7 +63,7 @@
   <div class="ui container">
     <div id="reg" class="ui container center aligned segment">
 
-      <form class="ui form">
+      <form class="ui form" action="log_act.php" method="post">
         <div class="field">
           <label>Username</label>
           <div class="ui left icon input">
@@ -93,7 +101,6 @@
   </div>
 
   </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="src/semantic.min.js"></script>
   <script src="src/hamburger.js"></script>
@@ -124,10 +131,8 @@
         }
       ]
     }
-  })
-;
-  })
-;
+  });
+  });
     
   </script>
 </body>

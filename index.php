@@ -31,9 +31,9 @@
   <div class="right menu">
   <div class="item">
   <div class="ui buttons">
-  <button class="ui green inverted button">Login</button>
+  <a class="ui green inverted button" href="login.php">Login</a>
   <div class="or"></div>
-  <button class="ui  reverted green button">Register</button>
+  <a class="ui  reverted green button" href="register.php">Register</a>
 </div>
     
 

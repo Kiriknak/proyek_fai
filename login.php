@@ -4,31 +4,58 @@
 <head>
   <meta charset="utf-8" />
   <title>Starting project</title>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
-  <style>.prompt {
-  transition: all 1s ease-in-out !important;
-    width: 180px;
-}
+  <link rel="stylesheet" type="text/css" href="src/semantic.min.css" />
+  <link rel="stylesheet" type="text/css" href="src/hamburger.css">
+  <style>
+    #reg {
+      max-width: 500px;
+    }
+  </style>
 
-.prompt:focus, 
-.prompt:hover {
-  width:  calc(350px);
-
-
-}</style>
 </head>
 
 <body>
-<div class="ui container">
-<div class="ui center placeholder segment">
 
-  
-<center> 
-<h1>Sign In</h1>
-</center>
-  <div class="ui one column very relaxed stackable grid">
-    <div class="column">
-      <div class="ui form">
+
+  <div class="ui pointing borderless menu  stackable">
+    <a class="item header">
+      NutupLapak.com
+    </a>
+    <a class="item">
+      Home
+    </a>
+    <a class="item">
+      Kategori
+    </a>
+    <div class="item">
+      <div class="ui transparent icon input">
+        <input type="text" placeholder="Search...">
+        <i class="search link icon"></i>
+      </div>
+    </div>
+    <div class="right menu">
+      <div class="item">
+        <div class="ui buttons">
+          <button class="ui green inverted button">Login</button>
+          <div class="or"></div>
+          <button class="ui  reverted green button">Register</button>
+        </div>
+
+
+      </div>
+
+    </div>
+    <div class="hamburger ">
+      <span class="hamburger-bun"></span>
+      <span class="hamburger-patty"></span>
+      <span class="hamburger-bun"></span>
+    </div>
+  </div>
+
+  <div class="ui container">
+    <div id="reg" class="ui container center aligned segment">
+
+      <form class="ui form">
         <div class="field">
           <label>Username</label>
           <div class="ui left icon input">
@@ -43,49 +70,32 @@
             <i class="lock icon"></i>
           </div>
         </div>
-        <div class="ui black submit button">Login</div>
+        <div class="ui green button">Login</div>
+      </form>
+
+      <div class="ui horizontal divider">
+        Or
       </div>
+      <div class="middle aligned column">
+
+        <span>Belum Punya Akun?</span>
+
+        <a href="daftar.php"><span class="ui green text">Sign Up</span></a>
+
+      </div>
+
+
+
     </div>
-    
-  </div>
-	
-  <div class="ui horizontal divider">
-    Or
-  </div>
-<div class="middle aligned column">
 
-	<center>
-		<br>
-	<lable>Anda Belum Mempunyai Akun??</lable>
-</center>
-</br>
-		<br>
-	<div><a href="daftar.php" class = "ui black submit button">Sign Up</a></div>	
-	
-</div>
-<br>
-	<br>
-<div class="ui  divider">
-</div>
-<br>
-<br>
-<center>
-<div class="footer">
-	<div class = "ui raised segment">
-		
-<lable>2020 @CopyRight NutupLaku.com </lable>
-	</div>
-	</div>
-</center>
-</br>
-<br>
-</div>
 
-  
-</div>
-  
   </div>
+
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+  <script src="src/semantic.min.js"></script>
+  <script src="src/hamburger.js"></script>
 </body>
+
 </html>

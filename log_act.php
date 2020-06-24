@@ -10,10 +10,14 @@ if(isset($_POST['username']))
 
     if(mysqli_num_rows($usr)>0)
     {
-        session_start();
-       $result= mysqli_fetch_assoc($usr);
-        $_SESSION['id']=$result['id'];
-        $_SESSION['login']=true;
+        //session_start();
+        $result= mysqli_fetch_assoc($usr);
+        //PAKAI COOKIE SAJA
+        //$_SESSION['id']=$result['id'];
+        //$_SESSION['login']=true;
+        setcookie("id",$result['id'],time()+3600);
+        setcookie("login",true,time()+3600);
+
 
         $conn->close();
         ?>
@@ -35,7 +39,7 @@ if(isset($_POST['username']))
 
 <div class="ui column stackable center page grid">
   <div class="four wide column"></div><!-- empty div just padding -->
-  <form class="ui six wide column form segment">
+  <form class="ui six wide column form segment" style="height: 300px!important">
         <h1 class="ui header text container"><span class="ui green text">Login Success</span></h1>
         <span class="ui  text">Redirecting in 5 seconds</span>
         <div class="ui active centered inline loader"></div>

@@ -24,7 +24,7 @@
 
 <body>
 
-<?php include 'navbar.php'; ?>
+<?php include 'menubar.php'; ?>
 
   <div class="ui container">
     <div id="reg" class="ui container center aligned segment">

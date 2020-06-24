@@ -26,6 +26,13 @@
                     <div class="field">
                         <label>Username</label>
                         <input type="text" name="username" placeholder="4-10 Character">
+                        <div class="ui  message hidden msg" >
+                            <i class="close icon msg"></i>
+                            <div class="header msg">
+                        </div>
+                            <p class="msg">
+                            </p>
+                        </div>
                     </div>
 
                     <div class="field">
@@ -84,6 +91,8 @@
                     </div>
                     <div class="ui error message"></div>
 
+                    <input type="submit" class="ui green button disabled" name="submit">
+
             </form>
 
 
@@ -109,15 +118,55 @@
     <script>
         $(document).ready(function() {
                 $('.ui.checkbox').checkbox();
+                $('.close.icon.msg').on('click', function() {
+                    $('.msg').addClass('hidden');
+                })
                 $('#date_calendar')
                     .calendar({
                         type: 'date'
                     });
 
+                    $("input[name='username']").on('change', function() {
+
+                        $(this).addClass('loading');
+                        var username = $("input[name='username']").val();
+                        
+                        $('input[type="submit"]').removeClass('disabled');
+
+                        $.ajax({
+                            type: "post",
+                            url: "ajax/checkuser.php",
+                            data: "username=" + username,
+                            success: function(data) {
+                                if (data == 0) {
+                                    
+                                    $('.ui.message.msg').addClass('success');
+                                    $('.header.msg').html('Username Available');
+                                    $('.ui.message.msg').removeClass('error');
+
+                                } else {
+                                    $('.ui.message.msg').addClass('error');
+                                    
+                                    $('.header.msg').html('Username unavailable');
+                                    $('p .msg').html("please select another username");
+                                    $('.ui.message.msg').removeClass('success');
+                                    $('button[name="submit"].').addClass('disabled');
+
+                                }
+                                $('.ui.message.msg').removeClass('hidden');
+
+                            }   
+                        });
+
+                        $('.ui.message.msg').addClass('visible');
+                        $(this).removeClass('loading');
+
+                    });
 
 
-                $('.ui.form').click(function(event) {
-                    event.preventDefault();
+
+                $('.ui.form').click(function() {
+                    
                     $('.ui.form')
                         .form({
                             fields: {

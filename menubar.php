@@ -1,5 +1,5 @@
 
-  <div class="ui pointing borderless menu  stackable">
+  <div class="ui pointing borderless menu sticky stackable">
     <a class="item header">
       NutupLapak.com
     </a>
@@ -16,16 +16,24 @@
       </div>
     </div>
     <div class="right menu">
-      <div class="item">
+    <div class="item">
+    <div class="ui basic button"><i class="shopping cart icon"></i></div>
+
+    </div>
+     
       <?php
         if(!isset($_COOKIE['login'])){
           ?>
+           <div class="item">
           <div class="ui buttons">
           <a class="ui green inverted button" href="login.php">Login</a>
           <div class="or"></div>
           <a class="ui  reverted green button" href="register.php">Register</a>
         </div>
         <?php
+        //if($_COOKIE['level']>1){
+
+        
         
         }
       ?>

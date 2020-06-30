@@ -12,7 +12,12 @@
 </head>
 
 <body>
-  <?php include "menubar.php"; ?>
+  <?php include "menubar.php"; 
+  ?>
+
+<div class="ui container">
+
+</div>
 
 
 

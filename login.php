@@ -1,9 +1,11 @@
 <?php 
-  session_start();
-  if(isset($_SESSION['id']))
+  if(isset($_COOKIE['id']))
   {
     header('location:index.php');
   }
+
+  
+  
 ?>
 
 <!DOCTYPE HTML>

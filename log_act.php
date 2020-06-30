@@ -5,18 +5,20 @@ if(isset($_POST['username']))
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    mysqli_select_db($conn,"proyek") or die("gagal");
+    mysqli_select_db($conn,"proyek");
     $usr=mysqli_query($conn,"SELECT * from akun where username='$username' and password='$password'");
 
     if(mysqli_num_rows($usr)>0)
     {
-        //session_start();
+        session_start();
         $result= mysqli_fetch_assoc($usr);
         //PAKAI COOKIE SAJA
         //$_SESSION['id']=$result['id'];
         //$_SESSION['login']=true;
         setcookie("id",$result['id'],time()+3600);
         setcookie("login",true,time()+3600);
+        setcookie("username",$username,time()+3600);
+        $_SESSION['level']=$result['level'];
 
 
         $conn->close();

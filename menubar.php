@@ -1,4 +1,17 @@
 
+<?php 
+  session_start();
+  $p=0;
+  if((isset($_COOKIE['login'])) && $_COOKIE['login']==true){
+    $level=$_SESSION['level'];
+    $username=$_COOKIE['username'];
+
+  }
+  else $level=-1;
+
+  
+?>
+<div class="ui fluid container" style="padding-bottom: 50px;">
   <div class="ui pointing borderless menu sticky stackable">
     <a class="item header">
       NutupLapak.com
@@ -17,7 +30,9 @@
     </div>
     <div class="right menu">
     <div class="item">
-    <div class="ui basic button"><i class="shopping cart icon"></i></div>
+    <div class="ui basic green button"><i class="shopping cart icon"></i>    
+    <div class="floating ui red label"><?php echo $p;?></div>
+</div>
 
     </div>
      
@@ -31,10 +46,25 @@
           <a class="ui  reverted green button" href="register.php">Register</a>
         </div>
         <?php
-        //if($_COOKIE['level']>1){
-
-        
-        
+        }
+        else{
+          if($level>=0)
+          {
+            ?>
+            <div class="ui  dropdown item" style="min-width: 130px">
+              <span class="ui green text"><?php echo $username."  ";?></span>
+              <br>
+    <i class="settings icon" style="padding-left: 1em;"></i>
+    <div class="menu">
+    <div class="header">
+      Saldo : Rp.100.000
+    </div>
+      <a class="item" href="setting.php">Settings</a>
+      <a class="item" href="history.php">Riwayat</a>
+      <a class="item" href="logout.php">Logout</a>
+    </div>
+<?php
+          }
         }
       ?>
       </div>
@@ -46,3 +76,4 @@
       <span class="hamburger-bun"></span>
     </div>
   </div>
+</div>

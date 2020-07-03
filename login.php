@@ -1,11 +1,8 @@
-<?php 
-  if(isset($_COOKIE['id']))
-  {
+<?php
+if (isset($_COOKIE['login'])) {
     header('location:index.php');
-  }
+}
 
-  
-  
 ?>
 
 <!DOCTYPE HTML>
@@ -26,7 +23,7 @@
 
 <body>
 
-<?php include 'menubar.php'; ?>
+  <?php include 'menubar.php';?>
 
   <div class="ui container">
     <div id="reg" class="ui container center aligned segment">
@@ -46,7 +43,7 @@
             <i class="lock icon"></i>
           </div>
         </div>
-        <button class="ui green button" type="submit" >Login</button>
+        <button class="ui green button" type="submit">Login</button>
         <div class="ui error message"></div>
       </form>
 
@@ -74,37 +71,53 @@
   <script src="src/hamburger.js"></script>
   <script src="src/sticky.js"></script>
 
-  <script>$(document).ready(function(){
+  <script>
+    $(document).ready(function() {
 
- $('.ui.form')
-  .form({
-    
-    username: {
-      identifier : 'username',
-      rules: [
-        {
-          type   : 'empty',
-          prompt : 'Please enter a username'
-        }
-      ]
-    },
-    password: {
-      identifier : 'password',
-      rules: [
-        {
-          type   : 'empty',
-          prompt : 'Please enter a password'
-        },
-        {
-          type   : 'length[6]',
-          prompt : 'Your password must be at least 6 characters'
-        }
-      ]
-    }
-  });
-  });
-    
+      $('.ui.form')
+        .form({
+
+          username: {
+            identifier: 'username',
+            rules: [{
+              type: 'empty',
+              prompt: 'Please enter a username'
+            }]
+          },
+          password: {
+            identifier: 'password',
+            rules: [{
+                type: 'empty',
+                prompt: 'Please enter a password'
+              },
+              {
+                type: 'length[6]',
+                prompt: 'Your password must be at least 6 characters'
+              }
+            ]
+          }
+        });
+    });
   </script>
+
+  <?php
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if ($_GET['msg'] = 'pass_fail') {
+        echo "<script>
+      $(document).ready(function(){
+
+        $('.ui.form').append('<div class='ui negative message'>
+        <i class='close icon'></i>
+        <div class='header'>
+          Password Salah,harap coba lagi
+        </div>
+        </div>');
+    })
+      </script>";
+    }
+    else echo "nothing";
+}
+?>
 </body>
 
 </html>

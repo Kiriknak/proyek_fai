@@ -1,4 +1,9 @@
-<!DOCTYPE HTML>
+<?php
+session_start();
+if(isset($_SESSION['level'])&&$_SESSION['level']>=1)
+{
+    ?>
+    <!DOCTYPE HTML>
 <html>
 
 <head>
@@ -6,8 +11,8 @@
     <title>Starting project</title>
     <link rel="stylesheet" type="text/css" href="src/semantic.min.css" />
     <link rel="stylesheet" type="text/css" href="src/hamburger.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/dropzone.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/dropzone.min.js"></script>
     <style>
         #reg {
             max-width: 500px !important;
@@ -18,8 +23,9 @@
 <body>
     <?php include "menubar.php"; ?>
 
-    <div id="reg" class="ui container center aligned segment">
-        <form class="ui form" action="masukgambar1.php" method="POST" enctype="multipart/form-data">
+    <div id="reg" class="ui container  segment">
+        <h1 class="ui header center aligned">Tambah Barang</h1>
+        <form class="ui form " action="act_add_barang.php" method="POST" enctype="multipart/form-data">
             <div class="field">
                 <div class="field">
                     <label>Nama Barang</label>
@@ -49,6 +55,7 @@
                 <div class="field">
                     <label>Input Gambar Barang :</label>
                     <input name="foto" type="file">
+                    
                 </div>
                 <div class="ui error message"></div>
                 <input type="submit" name="submit" class="ui green button hidden">
@@ -159,4 +166,5 @@
 </body>
 
 
-</html>
+</html><?php
+}

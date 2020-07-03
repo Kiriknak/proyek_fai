@@ -25,7 +25,6 @@
                   $finfo    = new finfo(FILEINFO_MIME);
                   $mimeType = $finfo->buffer($img);
                   
-                  $foto = 0;
                   //$foto = "data:$mimeType;base64,'.base64_encode($foto->load()) .'";
                   
 

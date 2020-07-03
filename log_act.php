@@ -6,23 +6,22 @@ if(isset($_POST['username']))
     $password = $_POST['password'];
 
     mysqli_select_db($conn,"proyek");
-    $usr=mysqli_query($conn,"SELECT * from akun where username='$username' and password='$password'");
+    
+    $usr=mysqli_query($conn,"SELECT * from akun where username='$username'");
 
     if(mysqli_num_rows($usr)>0)
     {
         session_start();
         $result= mysqli_fetch_assoc($usr);
-        //PAKAI COOKIE SAJA
-        //$_SESSION['id']=$result['id'];
-        //$_SESSION['login']=true;
-        setcookie("id",$result['id'],time()+3600);
-        setcookie("login",true,time()+3600);
-        setcookie("username",$username,time()+3600);
-        $_SESSION['level']=$result['level'];
 
+        $dbpass=$result['password'];
 
-        $conn->close();
-        ?>
+        if(password_verify($password,$dbpass)){
+
+            setcookie("login",true,time()+3600);
+            $_SESSION['level']=$result['level'];
+            $_SESSION['username']=$result['username'];
+            ?>
 
 <html>
 
@@ -30,14 +29,13 @@ if(isset($_POST['username']))
   <meta charset="utf-8" />
   <title>Starting project</title>
   <link rel="stylesheet" type="text/css" href="src/semantic.min.css" />
-  <link rel="stylesheet" type="text/css" href="src/hamburger.css">
   
   </style>
 
 </head>
 <body>
     
-<div class="ui container">
+<div class="ui container" style="padding-top: 10em">
 
 <div class="ui column stackable center page grid">
   <div class="four wide column"></div><!-- empty div just padding -->
@@ -59,7 +57,16 @@ window.location.href = "index.php";
 }, 5000);
     </script>
 </body>
+<?php
+        }
+        else echo "password verification failed";
+        //PAKAI COOKIE SAJA
+        //$_SESSION['id']=$result['id'];
+        //$_SESSION['login']=true;
 
+
+        $conn->close();
+        ?>
 
 <?php
     }

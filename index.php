@@ -16,7 +16,7 @@
   ?>
 
 <div class="ui container">
-
+<?php include "item.php";?>
 </div>
 
 

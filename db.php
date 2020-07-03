@@ -1,10 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli("localhost", "root", "");
+mysqli_select_db($conn,"proyek");
 
 // Check connection
 if ($conn->connect_error) {

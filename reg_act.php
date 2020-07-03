@@ -12,8 +12,9 @@
     $input_date=$_POST['date'];
     $date=strtotime($_POST['date']);
     $date=date("Y-m-d",$date);
+    $encpassword=password_hash($password,PASSWORD_DEFAULT);
     //$password= $_POST['password'];
-    $query=$conn->query("INSERT INTO `akun` ( `username`, `password`, `email`, `telepon`, `tgl_lahir`, `alamat`) VALUES('$username','$password','$email','$telepon','$date','$alamat')");
+    $query=$conn->query("INSERT INTO `akun` ( `username`, `password`, `email`, `telepon`, `tgl_lahir`, `alamat`) VALUES('$username','$encpassword','$email','$telepon','$date','$alamat')");
 
     if($query){
         ?>
@@ -25,14 +26,13 @@
   <meta charset="utf-8" />
   <title>Starting project</title>
   <link rel="stylesheet" type="text/css" href="src/semantic.min.css" />
-  <link rel="stylesheet" type="text/css" href="src/hamburger.css">
   
   </style>
 
 </head>
 <body>
     
-<div class="ui container">
+<div class="ui container" style="padding-top: 100px;">
 
 <div class="ui column stackable center page grid">
   <div class="four wide column"></div><!-- empty div just padding -->

@@ -26,7 +26,7 @@ deskripsi varchar (1000) not null
 
 
 
-      $query = mysqli_query($conn, "INSERT INTO barang (nama_barang,foto,harga,stok,kategori,deskripsi) VALUES('$nama','{$foto}','$harga','$stock','$kategori','$deskripsi')");
+      $query = mysqli_query($conn, "INSERT INTO barang (nama_barang,foto,harga,stok,kategori,deskripsi,seller) VALUES('$nama','{$foto}','$harga','$stock','$kategori','$deskripsi','$seller')");
 
       if ($query) {
         echo "tes";

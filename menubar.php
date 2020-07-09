@@ -55,7 +55,7 @@ else {
               <span class="ui green text">Seller</span>
               <div class="menu">
                 <a class="item" href="add_barang.php">Tambah Barang</a>
-                <a class="item" href="setting.php">List Barang</a>
+                <a class="item" href="list.php">List Barang</a>
                 <a class="item" href="history.php">Riwayat Penjualan</a>
               </div>
           </div>

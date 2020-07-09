@@ -5,6 +5,5 @@ $id=$_REQUEST['id'];
 
 echo $conn->query("delete from barang where id_barang = $id");
 
-
 }
 ?>

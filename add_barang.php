@@ -47,10 +47,21 @@ if(isset($_SESSION['level'])&&$_SESSION['level']>=1)
                     <textarea name="deskripsi" placeholder="deskripsi Barang"></textarea>
                 </div>
 
+                
                 <div class="field">
-                    <label>Kategori</label>
-                    <input type="text" name="kategori" placeholder="Contoh : Soft Drink"></input>
-                </div>
+                        <label>Kategori</label>
+                        <select class="ui search selection dropdown" id="kategori" name="kategori">
+                            <option value="">Select Kategori</option>
+                            <option value="Makanan">Makanan</option>
+                            <option value="Minuman">Minuman</option>
+                            <option value="Peralatan">Peralatan</option>
+                            <option value="Elektronik">Elektronik</option>
+                            <option value="Komputer">Komputer</option>
+                            <option value="Olahraga">Olahraga</option>
+                            <option value="Pakaian">Pakaian</option>
+                            <!-- Saving your scroll sanity !-->
+                        </select>
+                    </div>
 
                 <div class="field">
                     <label>Input Gambar Barang :</label>
@@ -78,6 +89,7 @@ if(isset($_SESSION['level'])&&$_SESSION['level']>=1)
 
     <script>
         $(document).ready(function() {
+            $('#kategori').dropdown();
 
             $('.ui.form').form({
                 fields: {

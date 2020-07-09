@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['level'])) {
     if ($_SESSION['level'] >= 1) {
-        ?>
+?>
         <!DOCTYPE HTML>
         <html>
 
@@ -18,8 +18,8 @@ if (isset($_SESSION['level'])) {
 
         <body>
             <?php
-include 'menubar.php';
-        ?>
+            include 'menubar.php';
+            ?>
             <div class="ui container">
                 <div class="ui divider"></div>
 
@@ -37,22 +37,21 @@ include 'menubar.php';
                     </thead>
                     <tbody>
 
-                    <?php 
-                    include 'db.php';
-                    $result = $conn->query("SELECT * from barang where id_seller='$username'");
+                        <?php
+                        include 'db.php';
+                        $result = $conn->query("SELECT * from barang where id_seller='$username'");
 
-                    while($row = $result->fetch_array())
-                    {
-                        $id = $row["id_barang"];
-                        $harga = $row["harga"];
-                        $stok = $row["stok"];
-                        $harga=$row["harga"];
-                        $nama = $row["nama_barang"];
-                        echo '<tr>
-                            <td>'.$id.'</td>
-                            <td>'.$harga.'</td>
-                            <td>'.$nama.'</td>
-                            <td>'.$stok.'</td>
+                        while ($row = $result->fetch_array()) {
+                            $id = $row["id_barang"];
+                            $harga = $row["harga"];
+                            $stok = $row["stok"];
+                            $harga = $row["harga"];
+                            $nama = $row["nama_barang"];
+                            echo '<tr>
+                            <td>' . $id . '</td>
+                            <td>' . $harga . '</td>
+                            <td>' . $nama . '</td>
+                            <td>' . $stok . '</td>
                             <td width="100px">
                                 <div class="ui two buttons">
                                     <div class="ui button primary" id="edit">
@@ -64,38 +63,51 @@ include 'menubar.php';
                                 </div>
                             </td>
                         </tr>';
-                    }
-                    ?>
-                        
+                        }
+                        ?>
+
 
                     </tbody>
                 </table>
             </div>
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
             <script src="src/semantic.min.js"></script>
             <script src="src/hamburger.js"></script>
             <script src="src/sticky.js"></script>
             <script>
-                $(document).ready(function(){
-                    $('#delete').on('click', function(){
-                        let id=$(this).closest('tr').find('td:first').text();
-                        if(confirm("Are you sure you want to delete?")){
-                            $.ajax(
-                {
-                url: "ajax/deletebarang.php",
-                type: "POST",
+                $(document).ready(function() {
 
-                data: "id="+id,
-                success: function (result) {
-                        location.reload();
-                    }});
+                    $('#edit').on('click', function() {
+                        let id = $(this).closest('tr').find('td:first').text();
+                        
+                        var idx = 'edit_barang.php?id=' + id
+                        window.location.href = idx;
+                    });
+
+                    $('#delete').on('click', function() {
+                        let id = $(this).closest('tr').find('td:first').text();
+                        if (confirm("Are you sure you want to delete?")) {
+                            $.ajax({
+                                url: "ajax/deletebarang.php",
+                                type: "POST",
+
+                                data: "id=" + id,
+                                success: function(result) {
+                                    if (result == 1) {
+                                        alert(" delete success");
+                                        location.reload();
+                                    } else {
+                                        alert("Data Tidak Berhasil Di hapus");
+                                    }
+                                }
+                            });
                         }
-                })});
+                    })
+                });
             </script>
         </body>
 <?php
-} else {
+    } else {
         header("Location:index.php");
     }
 } else {

@@ -14,8 +14,12 @@
     $date=date("Y-m-d",$date);
     $encpassword=password_hash($password,PASSWORD_DEFAULT);
     //$password= $_POST['password'];
-    $query=$conn->query("INSERT INTO `akun` ( `username`, `password`, `email`, `telepon`, `tgl_lahir`, `alamat`) VALUES('$username','$encpassword','$email','$telepon','$date','$alamat')");
+    $avatar=addslashes(file_get_contents("src/default.png"));
+    //$avatar=funct->resize($avatar);
+    $query=$conn->query("INSERT INTO `akun` ( `username`, `password`, `email`, `telepon`, `tgl_lahir`, `alamat`,`avatar`) VALUES('$username','$encpassword','$email','$telepon','$date','$alamat','$avatar')");
 
+
+    $itm='data:' . 'image/png;' . 'base64,' . base64_encode($avatar);
     if($query){
         ?>
         
@@ -38,7 +42,7 @@
   <div class="four wide column"></div><!-- empty div just padding -->
   <form class="ui six wide column form segment" style="height: 300px!important">
         <h1 class="ui header text container"><span class="ui green text">Register Success</span></h1>
-        <span class="ui  text">Redirecting to login page in 5 seconds</span>
+        <span class="ui  text">Redirecting to login page in 3 seconds</span>
         <div class="ui active centered inline loader"></div>
 
 </form>
@@ -51,7 +55,7 @@
 // Move to a new location or you can do something else
 window.location.href = "login.php";
 
-}, 5000);
+}, 3000);
     </script>
 </body>
 
@@ -61,7 +65,8 @@ window.location.href = "login.php";
     }
     else {
         echo "gagal";
-        echo $date;
+        
+        echo "<img src=".$itm.">";
     }
     
     }

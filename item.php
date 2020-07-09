@@ -4,7 +4,7 @@ include "db.php";
 mysqli_select_db($conn, "proyek") or die("gagal");
 
 
-$hasil = "SELECT * from barang";
+$hasil = "SELECT id_barang,id_seller,nama_barang,foto,harga,stok,kategori,deskripsi,avatar from barang join akun on id_seller=username";
 
 //pakai ini dan while dibawah yang dikomen juga bisa
 /*    $hasil1 = $conn->prepare($hasil);
@@ -33,6 +33,7 @@ $result = $conn->query($hasil);
       //while ($row = $result->fetch_assoc()) {
 
       $id = $row["id_barang"];
+      $seller=$row['id_seller'];
       $nama = $row["nama_barang"];
 
       $foto = $row["foto"];
@@ -45,38 +46,38 @@ $result = $conn->query($hasil);
       $deskripsi = $row["deskripsi"];
       $kategori = $row["kategori"];
       $img = $row["foto"];
-      $mimeType = finfo_buffer(finfo_open(), $img, FILEINFO_MIME_TYPE);
-
-      //
-      $resz = imagecreatefromstring($foto);
-      $width = imagesx($resz);
-      $height = imagesy($resz);
-      $newWidth = 260;
-      $newHeight = ($height / $width) * $newWidth;
-      $tmp = imagecreatetruecolor($newWidth, 280);
-      imagealphablending($tmp, false);
-      imagesavealpha($tmp, true);
-
-
-      $trans_colour = imagecolorallocatealpha($tmp, 255, 255, 255, 127);
-      imagefill($tmp, 0, 0, $trans_colour);
+      $imgAvatar=$row['avatar'];
+      // $mimeType = finfo_buffer(finfo_open(), $img, FILEINFO_MIME_TYPE);
+      
+      // //
+      // $resz = imagecreatefromstring($foto);
+      // $width = imagesx($resz);
+      // $height = imagesy($resz);
+      // $newWidth = 260;
+      // $newHeight = ($height / $width) * $newWidth;
+      // $tmp = imagecreatetruecolor($newWidth, 280);
+      // imagealphablending($tmp, false);
+      // imagesavealpha($tmp, true);
 
 
-
-      $centreX = round($newWidth / 2);
-      $centreY = round($newHeight / 2);
-
-      imagecopyresampled($tmp, $resz, 0, $centreY / 2, 0, 0, $newWidth, $newHeight, $width, $height);
+      // $trans_colour = imagecolorallocatealpha($tmp, 255, 255, 255, 127);
+      // imagefill($tmp, 0, 0, $trans_colour);
 
 
 
-      ob_start();
-      imagepng($tmp);
-
-      $blob = ob_get_clean();
+      // $centreX = round($newWidth / 2);
+      // $centreY = round($newHeight / 2);
+      // imagecopyresampled($tmp, $resz, 0, $centreY / 2, 0, 0, $newWidth, $newHeight, $width, $height);
+      // ob_start();
+      // imagepng($tmp);
+      // $blob = ob_get_clean();
       //$foto= 'data:'.$mimeType.';'.'base64,'.base64_encode($blob);
-      $foto = 'data:' . 'image/png;' . 'base64,' . base64_encode($blob);
+      
 
+      //$rs2=$conn->query('select avatar from akun where id='.$);
+
+      $foto = 'data:' . 'image/png;' . 'base64,' . base64_encode($img);
+      $avatar='data:' . 'image/png;' . 'base64,' . base64_encode($imgAvatar);
       if (strlen($nama) > 60) {
         $nama = substr($nama, 0, 60) . "...";
       }
@@ -98,7 +99,7 @@ $result = $conn->query($hasil);
     ?>
       <div class="extra content bottom attached">
         <div class="right floated author">
-          <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/matt.jpg"> Matt
+          <img class="ui avatar image" src="<?php echo $avatar;?>"> <?php echo $seller;?>
         </div>
       </div>
     <?php

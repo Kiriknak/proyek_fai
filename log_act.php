@@ -41,7 +41,7 @@ if(isset($_POST['username']))
   <div class="four wide column"></div><!-- empty div just padding -->
   <form class="ui six wide column form segment" style="height: 300px!important">
         <h1 class="ui header text container"><span class="ui green text">Login Success</span></h1>
-        <span class="ui  text">Redirecting in 5 seconds</span>
+        <span class="ui  text">Redirecting in 3 seconds</span>
         <div class="ui active centered inline loader"></div>
 
 </form>
@@ -54,7 +54,7 @@ if(isset($_POST['username']))
 // Move to a new location or you can do something else
 window.location.href = "index.php";
 
-}, 5000);
+},3000);
     </script>
 </body>
 <?php

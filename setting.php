@@ -117,9 +117,9 @@ if(isset($_SESSION['username']))
                 <div>
                     <br>
                     <center>
-                    <div class="ui green button btn" id="btn1">
+                    <a class="ui green button btn" id="btn1" href="uplevel.php?username=<?php echo $username1;?>">
                                     Merchant
-                                </div>                
+                                </a>                
                                 </center>
                 </div>
 

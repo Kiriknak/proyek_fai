@@ -83,7 +83,7 @@ if (isset($_SESSION['cart'])) {
             <div class="menu">
               <a class="item" href="add_barang.php">Tambah Barang</a>
               <a class="item" href="list.php">List Barang</a>
-              <a class="item" href="history.php">Riwayat Penjualan</a>
+              <a class="item" href="historyjual.php">Riwayat Penjualan</a>
             </div>
           </div>
           <?php

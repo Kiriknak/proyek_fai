@@ -17,7 +17,7 @@ if(isset($_SESSION['level']))
 
         </head><body>
 <?php
-        include 'menubar.php';
+        include_once 'menubar.php';
         ?>
         <div class="ui container">
         <div class="ui divider"></div>

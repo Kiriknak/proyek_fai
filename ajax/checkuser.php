@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST['username'])){
-    include('../db.php');
+    include_once('../db.php');
     $username = $_POST['username'];
 
     mysqli_select_db($conn,'proyek');

@@ -1,7 +1,7 @@
 <?php
 
     if(isset($_POST['username'])){
-    include "db.php";
+    include_once "db.php";
     $conn->select_db('proyek');
     $username = $_POST['username'];
     $password = $_POST['password'];

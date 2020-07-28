@@ -1,5 +1,5 @@
 <?php
-include "db.php";
+include_once "db.php";
 if(isset($_POST['username']))
 {
     $username = $_POST['username'];

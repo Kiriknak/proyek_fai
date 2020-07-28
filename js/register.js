@@ -25,7 +25,7 @@ $(document).ready(function() {
                         $('.ui.message.msg').addClass('success');
                         $('.header.msg').html('Username Available');
                         $('.ui.message.msg').removeClass('error');
-                        $('.ui.')
+                    
                         
 
                     } else {

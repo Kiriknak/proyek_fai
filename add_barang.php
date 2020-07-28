@@ -21,7 +21,7 @@ if(isset($_SESSION['level'])&&$_SESSION['level']>=1)
 </head>
 
 <body>
-    <?php include "menubar.php"; ?>
+    <?php include_once "menubar.php"; ?>
 
     <div id="reg" class="ui container  segment">
         <h1 class="ui header center aligned">Tambah Barang</h1>

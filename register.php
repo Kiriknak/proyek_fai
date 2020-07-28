@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <?php include("menubar.php"); ?>
+    <?php include_once("menubar.php"); ?>
 
     <div id="right" class="ui container">
         <div id="reg" class="ui container  segment">

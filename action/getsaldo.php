@@ -1,7 +1,7 @@
 <?php
     if($_SERVER['REQUEST_METHOD']=='GET'){
         
-    include('../db.php');
+    include_once('../db.php');
     $id=$_REQUEST['id'];
     $result =$conn->query("SELECT saldo from akun where id = $id");
     if($result->num_rows>0){

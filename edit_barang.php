@@ -4,7 +4,7 @@ if (isset($_SESSION['level']) && $_SESSION['level'] >= 1) {
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_REQUEST['id'])) {
         $id_barang = $_REQUEST['id'];
 
-        include("db.php");
+        include_once("db.php");
         $result = $conn->query("SELECT * from barang where id_barang =$id_barang");
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -33,7 +33,7 @@ if (isset($_SESSION['level']) && $_SESSION['level'] >= 1) {
             </head>
 
             <body>
-                <?php include "menubar.php"; ?>
+                <?php include_once "menubar.php"; ?>
 
                 <div id="reg" class="ui container  segment">
                     <h1 class="ui header center aligned">Edit Barang</h1>

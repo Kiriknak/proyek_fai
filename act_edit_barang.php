@@ -1,13 +1,13 @@
 
 <?php
-include 'action/funct.php';
+include_once 'action/funct.php';
 
 
 
 if (isset($_POST['submit'])) {
   if (!count($_FILES) > 0) {
     if (!isset($_FILES['foto']['tmp_name'])) {
-      include "db.php";
+      include_once "db.php";
       mysqli_select_db($conn, "proyek") or die("gagal");
       
       //$uploadedfile = $_FILES['foto']['tmp_name'];

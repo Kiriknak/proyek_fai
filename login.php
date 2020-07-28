@@ -23,7 +23,7 @@ if (isset($_COOKIE['login'])) {
 
 <body>
 
-  <?php include 'menubar.php';?>
+  <?php include_once 'menubar.php';?>
 
   <div class="ui container">
     <div id="reg" class="ui container center aligned segment">

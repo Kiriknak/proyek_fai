@@ -174,7 +174,7 @@
         $('#checkout').click(function() {
             $(this).addClass('loading');
 
-            if (!document.cookie.indexOf('login') <0) {
+            if (document.cookie.indexOf('login') <0) {
                 alert("harap login terlebih dahulu");
                 window.location.href = 'login.php';
             }

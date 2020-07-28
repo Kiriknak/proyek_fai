@@ -23,14 +23,14 @@ if (isset($_POST['submit'])) {
       $seller= $_SESSION['username'];
 
 
-      $sql="update barang set nama_barang='$nama',stok=$stock,deskripsi='$deskripsi',kategori=$kategori,harga=$harga where id_barang='$id'";
-      $query = mysqli_query($conn, "INSERT INTO barang (nama_barang,foto,harga,stok,kategori,deskripsi,id_seller) VALUES('$nama','$foto','$harga','$stock','$kategori','$deskripsi','$seller')");
+      $sql="update barang set nama_barang='$nama',stok=$stock,deskripsi='$deskripsi',kategori='$kategori',harga=$harga where id_barang='$id'";
+      $query = mysqli_query($conn, $sql);
 
       if ($query) {
-        echo "<script>alert('sukses');history.go(-1)</script>";
+        echo "<script>alert('sukses');window.location.href='list.php';</script>";
       } else {
-        echo "<script>alert('gagal');history.go(-1)</script>";
-        //header("Location:masukgambar.php");     
+        echo "<script>alert('gagal');window.location.href='list.php';</script>";
+        header("Location:masukgambar.php");     
       }
       
     $conn->close();

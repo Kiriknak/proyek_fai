@@ -84,10 +84,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             </button>
 
                             <?php
-                            if ($stok <= 3) {
-                                echo "<span class='ui red text'> Barang tinggal tersisa " . $stok . "</span>";
-                            } else
+                            if ($stok > 3) {
                                 echo "<span class='ui green text'> Barang  tersisa " . $stok . "</span>";
+                            } elseif ($stok<=0) {
+                                echo "<span class='ui red text'> Barang habis </span>";
+                            }else
+                            echo "<span class='ui red text'> Barang tinggal tersisa " . $stok . "</span>";
+
+
 
                             ?>
 

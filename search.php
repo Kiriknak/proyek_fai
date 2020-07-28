@@ -69,7 +69,7 @@ $strtp = implode(" ", $tampilanstr);
                 $pages = ceil($total / $halaman);
 
                 $count = 0;
-                while ($row = mysqli_fetch_assoc($query) and $count < 8) {
+                while ($row = mysqli_fetch_assoc($query)) {
                     $id = $row["id_barang"];
                     $seller = $row['id_seller'];
                     $nama = $row["nama_barang"];
@@ -108,13 +108,15 @@ $strtp = implode(" ", $tampilanstr);
                 }
                 ?>
             </div>
-            <div class="ui pagination menu">
+            <div class="ui pagination menu" style="margin-top:30px">
                
             <?php
             for ($i = 1; $i <= $pages; $i++) { 
                 
                 ?>
-                <a class="item" href="<?php 
+                <a class="item <?php
+                if($i==$page)echo 'active';
+                ?>" href="<?php 
                 $strHalaman="search.php?halaman=".$i;
                 
                 if(isset($_GET['nama']))

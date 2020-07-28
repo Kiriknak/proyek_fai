@@ -21,6 +21,7 @@ if(isset($_POST['username']))
             setcookie("login",true,time()+3600);
             $_SESSION['level']=$result['level'];
             $_SESSION['username']=$result['username'];
+            $_SESSION['saldo']=$result['saldo'];
             ?>
 
 <html>

@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             if (is_array($_SESSION['cart'])) {
                 if (array_key_exists($id, $_SESSION['cart'])) {
                     // Product exists in cart so just update the quanity
-                    if ($stok > $jumlah && $_SESSION['cart'][$id] < $stok) {
+                    if ( $_SESSION['cart'][$id]+$jumlah <= $stok) {
                         $_SESSION['cart'][$id] += $jumlah;
                         $status = 0;
                     } else {

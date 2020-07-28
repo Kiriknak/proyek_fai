@@ -39,7 +39,7 @@
             <p class="section">Checkout</p>
         </div>
 
-        <form class="ui form" action="pembayaran.php" method="POST" enctype="multipart/form-data">
+        <form class="ui form" action="checkout_end.php" method="POST" enctype="multipart/form-data">
 
             <div class="ui segment">
                 <h1 class="ui header">Pengiriman</h1>
@@ -88,7 +88,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
+                                <?php
                                 foreach ($_SESSION['cart'] as $id => $jumlah) {
                                     $berisi = false;
                                     $total = 0;
@@ -128,10 +128,27 @@
                                 </tr>
                             </tfoot>
                         </table>
-                        <button class="ui right labeled icon green inverted button" type="submit">
-  <i class="right arrow icon"></i>
-  Next
-</button>
+
+
+                        <div class="field">
+                            <h4 class="ui header">Pembayaran</h4>
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="metode" value="cod">
+                                <label>Cash On Delivery</label>
+                            </div>
+
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="metode" id="saldo" value="saldo" >
+                                    <label>Saldo : (Rp.<?php echo $saldo; ?>)</label>
+                                </div>
+                            </div>
+                            
+                        </div>
+                            <button class="ui right labeled icon green inverted button" type="submit">
+                                <i class="right arrow icon"></i>
+                                Checkout
+                            </button>
         </form>
     </div>
     </div>
@@ -151,8 +168,12 @@
                     Kabupaten: 'empty',
                     provinsi: 'empty',
                     nohp: ['empty', 'number'],
-                    kodepos: ['empty', 'number'],
-
+                    kodepos: ['empty', 'number']
                 }
             });
+
+        if(<?php echo $saldo-$total;?><0){
+            $('#saldo').attr("disabled","disabled");
+            $("<span class=\"ui red text\">Saldo kurang harap topup atau gunakan CoD</span>").insertAfter('#saldo');
+        }
     </script>
